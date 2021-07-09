@@ -50,9 +50,9 @@ def subdominant():
     probability = random.rand()
     if probability < 0.6:
         subdominant = IV
-    elif probability >= 0.6 and probability < 0.8:
+    elif probability >= 0.6 and probability < 0.9:
         subdominant = ii
-    elif probability >= 0.8 and probability < 0.9:
+    elif probability >= 0.9 and probability < 0.95:
         subdominant = bIV
     else:
         subdominant = bIII
@@ -111,8 +111,21 @@ def translation(lista,ext):
                                 for i in range (len(major_ext)):
                                     w=p+z
                                     if r>p and r<w:
-                                        extension=major_ext[i]
-                                        lista[j]=notacion_sostenidos[nota]+extension
+                                        if lista[j] == 1:
+                                            h=random.rand()
+                                            if h>0.85:
+                                                lista[j]=notacion_sostenidos[nota]+'maj7'
+                                                p=p+z
+                                            else:
+                                                lista[j]=notacion_sostenidos[nota]
+                                                p=p+z
+                                        elif lista[j] == 8:
+                                            lista[j]=notacion_sostenidos[nota]+'7'
+                                            p=p+z
+                                        else:
+                                            extension=major_ext[i]
+                                            lista[j]=notacion_sostenidos[nota]+extension
+                                            p=p+z
                                     else:
                                         p=p+z
                             else:
@@ -160,17 +173,31 @@ def translation(lista,ext):
                                 for i in range (len(major_ext)):
                                     w=p+z
                                     if r>p and r<w:
-                                        extension=major_ext[i]
-                                        lista[j]=notacion_bemoles[nota]+extension
+                                        if lista[j] == 1:
+                                            h=random.rand()
+                                            if h>0.85:
+                                                lista[j]=notacion_bemoles[nota]+'maj7'
+                                                p=p+z
+                                            else:
+                                                lista[j]=notacion_bemoles[nota]
+                                                p=p+z
+                                        elif lista[j] == 8:
+                                            lista[j]=notacion_bemoles[nota]+'7'
+                                            p=p+z
+                                        else:
+                                            extension=major_ext[i]
+                                            lista[j]=notacion_bemoles[nota]+extension
+                                            p=p+z
                                     else:
                                         p=p+z
                             else:
                                 lista[j]=notacion_bemoles[nota]
-                        
                         else:
                             lista[j]=notacion_bemoles[nota]
-
-                    
+                else:
+                    contador=contador + 1
+            
+    
     return (lista)
         
 # CREACION DE LA ESTROFA 1:
